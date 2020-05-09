@@ -70,7 +70,7 @@ func (m Msg) IsMLAT() bool { return m.Type == "MLAT" }
 
 func (m Msg) IsMasked() bool { return strings.HasPrefix(string(m.Icao24), "~") }
 
-//func (m Msg)HasAltitude()     bool { return m.hasAltitude }
+func (m Msg) HasAltitude() bool     { return m.hasAltitude }
 func (m Msg) HasCallsign() bool     { return m.hasCallsign }
 func (m Msg) HasSquawk() bool       { return m.hasSquawk }
 func (m Msg) HasGroundSpeed() bool  { return m.hasGroundSpeed }
@@ -79,9 +79,13 @@ func (m Msg) HasPosition() bool     { return m.hasPosition }
 func (m Msg) HasVerticalRate() bool { return m.hasVerticalRate }
 
 // We create some ADSB messages outside of this lib, and need to assert these values
-func (m *Msg) SetHasGroundSpeed() { m.hasGroundSpeed = true }
-func (m *Msg) SetHasTrack()       { m.hasTrack = true }
-func (m *Msg) SetHasPosition()    { m.hasPosition = true }
+func (m *Msg) SetHasAltitude()     { m.hasAltitude = true }
+func (m *Msg) SetHasCallsign()     { m.hasCallsign = true }
+func (m *Msg) SetHasSquawk()       { m.hasSquawk = true }
+func (m *Msg) SetHasGroundSpeed()  { m.hasGroundSpeed = true }
+func (m *Msg) SetHasTrack()        { m.hasTrack = true }
+func (m *Msg) SetHasPosition()     { m.hasPosition = true }
+func (m *Msg) SetHasVerticalRate() { m.hasVerticalRate = true }
 
 func (m Msg) String() string {
 	s := fmt.Sprintf("%s%d : %s", m.Type, m.SubType, m.Icao24)

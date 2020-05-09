@@ -46,3 +46,59 @@ func TestAdsbPosition(t *testing.T) {
 		t.Errorf("ADS-B message should have position set")
 	}
 }
+
+func TestAdsbAltitude(t *testing.T) {
+	m := Msg{}
+
+	if m.HasAltitude() {
+		t.Errorf("ADS-B message should have no altitude")
+	}
+
+	m.SetHasAltitude()
+
+	if !m.HasAltitude() {
+		t.Errorf("ADS-B message should have altitude set")
+	}
+}
+
+func TestAdsbCallsign(t *testing.T) {
+	m := Msg{}
+
+	if m.HasCallsign() {
+		t.Errorf("ADS-B message should have no callsign")
+	}
+
+	m.SetHasCallsign()
+
+	if !m.HasCallsign() {
+		t.Errorf("ADS-B message should have callsign set")
+	}
+}
+
+func TestAdsbVerticalRate(t *testing.T) {
+	m := Msg{}
+
+	if m.HasVerticalRate() {
+		t.Errorf("ADS-B message should have no vertical rate")
+	}
+
+	m.SetHasVerticalRate()
+
+	if !m.HasVerticalRate() {
+		t.Errorf("ADS-B message should have vertical rate")
+	}
+}
+
+func TestAdsbSquawk(t *testing.T) {
+	m := Msg{}
+
+	if m.HasSquawk() {
+		t.Errorf("ADS-B message should have no squawk")
+	}
+
+	m.SetHasSquawk()
+
+	if !m.HasSquawk() {
+		t.Errorf("ADS-B message should have squawk set")
+	}
+}
